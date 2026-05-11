@@ -25,16 +25,29 @@ export async function generateAISummary(
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash", // Gemini 1.5 Flash - Fast and cost-effective
+      model: "gemini-2.5-flash", // Gemini 2.5 Flash - Free tier model
       generationConfig: {
         temperature: 0.7,
-        maxOutputTokens: 200,
+        maxOutputTokens: 2048, // Much higher limit for complete response
       },
     });
 
     const prompt = buildPrompt(auditResult);
     const result = await model.generateContent(prompt);
     const response = await result.response;
+    
+    // Log finish reason for debugging
+    const candidate = response.candidates?.[0];
+    if (candidate?.finishReason && candidate.finishReason !== "STOP") {
+      console.warn("AI response finished with reason:", candidate.finishReason);
+    }
+    
+    // Check if response was blocked
+    if (!response.candidates || response.candidates.length === 0) {
+      console.warn("AI response blocked or empty, using fallback");
+      return generateFallbackSummary(auditResult);
+    }
+    
     const summary = response.text();
 
     return summary.trim();
