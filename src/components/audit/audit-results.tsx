@@ -188,7 +188,7 @@ export function AuditResults({ result, narrative, onReset }: AuditResultsProps) 
             <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
               AI-Powered Analysis
               <span className="text-xs font-normal text-gray-500 bg-purple-50 px-2 py-1 rounded-full">
-                Powered by Claude
+                Powered by Gemini
               </span>
             </h2>
             {isLoadingAI ? (

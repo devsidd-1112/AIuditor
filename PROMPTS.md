@@ -438,8 +438,8 @@ Track what worked and what didn't for future reference.
 This is the ONE feature where AI must be used in production (not just development).
 
 ### Implementation
-**API**: Anthropic Claude API (claude-3-haiku-20240307)  
-**Model Choice**: Haiku for speed and cost-effectiveness  
+**API**: Google Gemini API (gemini-1.5-flash)  
+**Model Choice**: Gemini 1.5 Flash for speed and cost-effectiveness  
 **Max Tokens**: 200  
 **Temperature**: 0.7 (balanced creativity and consistency)
 
@@ -475,7 +475,7 @@ Do not use phrases like "I analyzed" or "I recommend". Write in third person or 
 **2. Structured Context**
 - Provides all key metrics in a scannable format
 - Includes both quantitative (numbers) and qualitative (tool names) data
-- Gives Claude enough context to be specific
+- Gives Gemini enough context to be specific
 
 **3. Explicit Constraints**
 - "~100 words" ensures conciseness
@@ -514,7 +514,7 @@ When the API is unavailable or fails:
 ### What We Learned
 
 **What Worked**:
-- Structured context format makes Claude's job easier
+- Structured context format makes Gemini's job easier
 - Explicit word count prevents rambling
 - Tone guidelines ensure consistency
 - Fallback prevents user-facing errors
@@ -533,14 +533,14 @@ When the API is unavailable or fails:
 ### Cost Analysis
 
 **Per Request**:
-- Model: claude-3-haiku-20240307
+- Model: gemini-1.5-flash
 - Input tokens: ~300 (prompt + context)
 - Output tokens: ~150 (100-word summary)
-- Cost: ~$0.0001 per audit
+- Cost: ~$0.00001 per audit (significantly cheaper than Claude)
 
 **At Scale**:
-- 1,000 audits/month: ~$0.10
-- 10,000 audits/month: ~$1.00
+- 1,000 audits/month: ~$0.01
+- 10,000 audits/month: ~$0.10
 - Negligible cost for significant value add
 
 ### Why Not Use AI for Core Audit Logic?
@@ -570,7 +570,7 @@ When the API is unavailable or fails:
 **File**: `src/lib/ai/summary.ts`  
 **API Route**: `src/app/api/ai-summary/route.ts`  
 **UI Component**: `src/components/audit/audit-results.tsx`  
-**Environment**: `ANTHROPIC_API_KEY` in `.env.local`
+**Environment**: `GEMINI_API_KEY` in `.env.local`
 
 ### Testing Strategy
 
@@ -599,7 +599,7 @@ When the API is unavailable or fails:
 - Architecture exploration
 - Copy variations
 
-**Production** (Anthropic API):
+**Production** (Google Gemini API):
 - Personalized audit summaries (required feature)
 
 ### Where We Didn't Use AI

@@ -25,7 +25,7 @@ AIuditor uses a lightweight, production-ready infrastructure stack designed for 
        │    ├── audits table
        │    └── leads table
        │
-       ├─── Anthropic API (Claude)
+       ├─── Google Gemini API
        │    └── AI-generated summaries
        │
        └─── Resend (Email)
@@ -111,8 +111,8 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_key
 RESEND_API_KEY=re_your_api_key
 FROM_EMAIL=AIuditor <onboarding@resend.dev>
 
-# Anthropic (AI Summaries)
-ANTHROPIC_API_KEY=sk-ant-your_api_key
+# Gemini (AI Summaries)
+GEMINI_API_KEY=your_gemini_api_key
 
 # Application
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
@@ -129,7 +129,7 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `RESEND_API_KEY`
 - `FROM_EMAIL`
-- `ANTHROPIC_API_KEY`
+- `GEMINI_API_KEY`
 
 ### Validation
 

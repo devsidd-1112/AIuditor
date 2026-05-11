@@ -1,10 +1,10 @@
 /**
  * AI-Generated Audit Summary
- * Uses Anthropic Claude API to generate personalized audit summaries
+ * Uses Google Gemini API to generate personalized audit summaries
  * Falls back to template-based summary if API fails
  */
 
-import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import type { AuditResult } from "@/types/audit";
 
 /**
@@ -15,36 +15,27 @@ export async function generateAISummary(
   auditResult: AuditResult
 ): Promise<string> {
   // Check if API key is configured
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   
   if (!apiKey) {
-    console.warn("ANTHROPIC_API_KEY not configured, using fallback summary");
+    console.warn("GEMINI_API_KEY not configured, using fallback summary");
     return generateFallbackSummary(auditResult);
   }
 
   try {
-    const anthropic = new Anthropic({
-      apiKey: apiKey,
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ 
+      model: "gemini-1.5-flash", // Fast and cost-effective
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 200,
+      },
     });
 
     const prompt = buildPrompt(auditResult);
-
-    const message = await anthropic.messages.create({
-      model: "claude-3-haiku-20240307", // Fast and cost-effective
-      max_tokens: 200,
-      temperature: 0.7,
-      messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-    });
-
-    // Extract text from response
-    const summary = message.content[0].type === "text" 
-      ? message.content[0].text 
-      : generateFallbackSummary(auditResult);
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const summary = response.text();
 
     return summary.trim();
   } catch (error) {
