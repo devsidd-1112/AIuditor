@@ -12,3 +12,40 @@ build
 *.tsbuildinfo
 .DS_Store
 Thumbs.db
+
+# Day summary files (keep in local, not in repo)
+DAY*_SUMMARY.md
+DAY*_COMPLETE.md
+DAY*_QUICKSTART.md
+DAY*_TESTING.md
+SETUP_COMPLETE.md
+VISUAL_SUMMARY.md
+PROJECT_STRUCTURE.md
+COMMANDS.md
+
+# QA and internal documentation (not for repo)
+COMPREHENSIVE_QA_REPORT.md
+QA_SUMMARY.md
+CRITICAL_FIXES.md
+LAUNCH_CHECKLIST.md
+ACTION_PLAN.md
+DEBUG_SELECT_ISSUE.md
+DROPDOWN_FIX_SUMMARY.md
+INFRASTRUCTURE_QA.md
+NEXT_STEPS.md
+FINAL_STEP.md
+QUICKSTART.md
+
+# Test utilities (not for production)
+clear-storage.html
+test-supabase.js
+verify-setup.js
+test-infrastructure.ps1
+test-infrastructure.sh
+test-db-connection.js
+setup-supabase-db.js
+verify-db-tables.js
+
+# IDE
+.vscode/
+.eslintignore
