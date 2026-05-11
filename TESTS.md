@@ -159,17 +159,18 @@ Test names describe what they test in plain English. Anyone should be able to un
 
 ---
 
-## Known Limitations
+## What's Not Tested
 
 ### What's Not Tested
 1. **UI Components** - Manual QA only for MVP
-2. **Database Operations** - Tested manually via Supabase dashboard
-3. **Email Delivery** - Tested manually via Resend dashboard
-4. **Rate Limiting** - Tested manually via API calls
-5. **Error Boundaries** - Tested manually by triggering errors
+2. **AI Summary Generation** - Tested manually via API calls
+3. **Database Operations** - Tested manually via Supabase dashboard
+4. **Email Delivery** - Tested manually via Resend dashboard
+5. **Rate Limiting** - Tested manually via API calls
+6. **Error Boundaries** - Tested manually by triggering errors
 
 ### Why
-MVP prioritizes core business logic testing. UI and integration tests will be added post-launch based on real usage patterns.
+MVP prioritizes core business logic testing. UI, integration, and AI tests will be added post-launch based on real usage patterns.
 
 ---
 

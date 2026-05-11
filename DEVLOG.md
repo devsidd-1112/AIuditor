@@ -902,3 +902,152 @@ The foundation is solid. Now we can iterate.
 **But First**: Ship Day 4, get real users, gather feedback.
 
 **Lesson**: Perfect is the enemy of shipped.
+
+
+## Day 5 — Engine V2 & Weighted Intelligence
+
+**Hours Worked:** 6 hours
+
+### What I Built
+- **Engine V2 Architecture**: Weighted confidence scoring system
+- **Overlap Intensity Analysis**: 0-100 scale for overlap detection
+- **Team Context Understanding**: Infers team stage and type
+- **Enhanced Prioritization**: Multi-factor recommendation sorting
+- **Layered Explanations**: 4 depths (concise/detailed/executive/technical)
+
+### What I Learned
+- **Confidence isn't binary**: Moving from fixed 0.7 to calculated 0.82 based on context makes recommendations more honest
+- **Intensity matters**: "80% overlap" is more meaningful as "78/100 intensity" with waste estimation
+- **Context is everything**: A 3-person team vs 10-person team needs different advice
+
+### Blockers
+- TypeScript type complexity with V2 metadata
+- Balancing backward compatibility with V1 types
+- Deciding what NOT to include in V2 (feature creep temptation)
+
+### Plan for Tomorrow
+- Build narrative engine on top of V2
+- Generate executive summaries
+- Create operational observations
+- Add workflow risk assessment
+
+---
+
+## Day 6 — Narrative Intelligence & Premium Design
+
+**Hours Worked:** 8 hours
+
+### What I Built
+- **Narrative Engine**: 8 components generating human-readable insights
+  - Executive summary generator
+  - Operational observations
+  - Overlap analysis narratives
+  - Recommendation explanations (layered)
+  - Workflow risk assessment
+  - Optimization simulations
+  - Operational assessment
+  - Report orchestrator
+- **Premium UI Redesign**: Warm gradient aesthetic (orange → rose → pink)
+- **Enhanced Recommendation Cards**: Expandable with full details
+- **Executive Summary Card**: Gradient hero with decorative elements
+
+### What I Learned
+- **Narrative quality matters**: Numbers alone don't convince, story + numbers do
+- **Design builds trust**: Premium aesthetics increase perceived credibility
+- **Vocabulary variation**: Avoiding repetitive "workflow" and "operational patterns" requires planning
+- **Mobile-first is hard**: Desktop is easy, mobile is where UX breaks
+
+### Blockers
+- Repetitive phrasing in narrative generation (solved with vocabulary system)
+- Currency formatting inconsistency (created formatCurrency utility)
+- Balancing detail vs readability in explanations
+
+### Plan for Tomorrow
+- Final cleanup and documentation alignment
+- Remove unnecessary files
+- Ensure all required docs are in root
+- Production deployment preparation
+
+---
+
+## Day 7 — Project Completed
+
+**Hours Worked:** 4 hours
+
+### What I Built
+- **AI-Generated Summaries**: Anthropic Claude API integration for personalized audit summaries
+- **API Route**: `/api/ai-summary` with graceful fallback
+- **Documentation Cleanup**: All required files moved to root, duplicates removed
+- **CI/CD Pipeline**: GitHub Actions workflow for automated testing
+- **Test Suite**: 8 audit engine tests with test runner
+- **Git History Cleanup**: Unified commit messages
+- **Final Polish**: README updates, PROMPTS.md documentation
+
+### What I Learned
+- **AI has its place**: Perfect for summaries, wrong for financial logic
+- **Fallbacks are critical**: API failures shouldn't break user experience
+- **Documentation matters**: Assignment format compliance is as important as code quality
+- **Git discipline**: Clean history makes projects more professional
+
+### Blockers
+- None - project completed successfully
+
+### Final Status
+- ✅ All 6 MVP features implemented
+- ✅ All 12 required documentation files in root
+- ✅ CI/CD pipeline configured and passing
+- ✅ Tests passing (8/8)
+- ✅ Production build successful
+- ✅ Mobile responsive
+- ✅ Ready for deployment
+
+**Project Status:** COMPLETE AND READY FOR SUBMISSION
+
+---
+
+## Final Reflection
+
+### Total Time Investment
+- **Day 1**: 3 hours (setup, planning, landing page)
+- **Day 2**: 4 hours (pricing research, audit engine architecture)
+- **Day 3**: 5 hours (form UX, results integration)
+- **Day 4**: 6 hours (backend infrastructure, database, email)
+- **Day 5**: 6 hours (Engine V2, weighted intelligence)
+- **Day 6**: 8 hours (narrative engine, premium design)
+- **Day 7**: 4 hours (AI summaries, final cleanup, documentation)
+- **Total**: 36 hours over 7 days
+
+### What Went Exceptionally Well
+1. **Deterministic architecture** - Maintainable and explainable
+2. **Honesty-first approach** - Differentiating and trust-building
+3. **Premium design** - Increases perceived value significantly
+4. **Phased development** - V2 engine → Narrative → UI polish worked perfectly
+5. **Documentation discipline** - Comprehensive from day one
+
+### What I'd Do Differently
+1. **Start with required docs structure** - Would have saved Day 7 cleanup
+2. **Test on mobile earlier** - Desktop-first caused mobile issues
+3. **Plan vocabulary variation upfront** - Narrative repetition was avoidable
+4. **Git commits more granular** - Better for tracking progress
+
+### Key Takeaways
+- **Product thinking = coding**: Understanding the user problem matters as much as implementation
+- **Constraints breed creativity**: 7-day deadline forced smart decisions
+- **Honesty is a feature**: "Already optimized" messaging builds trust
+- **Shipping beats perfecting**: MVP is about learning, not perfection
+- **Documentation is product**: In assignments, format compliance matters
+
+### Competitive Advantages
+1. **100% deterministic** - Not "AI-powered" hype
+2. **Operationally intelligent** - Sounds like a real consultant
+3. **Trust-first** - Conservative, honest, transparent
+4. **Production-ready** - Not a prototype or demo
+5. **Well-documented** - Clear thinking, clear communication
+
+---
+
+**Built with**: Deterministic logic, operational intelligence, and trust-first design.
+
+**Philosophy**: Every recommendation must answer WHY, HOW, WHAT, and WITH WHAT CONFIDENCE.
+
+**Result**: A lightweight AI procurement advisor that feels professionally believable.

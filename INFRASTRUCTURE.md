@@ -16,6 +16,7 @@ AIuditor uses a lightweight, production-ready infrastructure stack designed for 
        ├─── API Routes (/api/*)
        │    ├── /api/audit (save audits)
        │    ├── /api/lead (capture leads)
+       │    ├── /api/ai-summary (AI summaries)
        │    ├── /api/test-db (testing)
        │    ├── /api/test-email (testing)
        │    └── /api/test-audit-save (testing)
@@ -23,6 +24,9 @@ AIuditor uses a lightweight, production-ready infrastructure stack designed for 
        ├─── Supabase (PostgreSQL)
        │    ├── audits table
        │    └── leads table
+       │
+       ├─── Anthropic API (Claude)
+       │    └── AI-generated summaries
        │
        └─── Resend (Email)
             └── Transactional emails
@@ -107,6 +111,9 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_key
 RESEND_API_KEY=re_your_api_key
 FROM_EMAIL=AIuditor <onboarding@resend.dev>
 
+# Anthropic (AI Summaries)
+ANTHROPIC_API_KEY=sk-ant-your_api_key
+
 # Application
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
@@ -122,6 +129,7 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `RESEND_API_KEY`
 - `FROM_EMAIL`
+- `ANTHROPIC_API_KEY`
 
 ### Validation
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { SavingsHero } from "./savings-hero";
 import { RecommendationCard } from "./recommendation-card";
@@ -9,7 +9,7 @@ import { NoIssuesState } from "./no-issues-state";
 import { LeadCapture } from "@/components/forms/lead-capture";
 import type { AuditResult } from "@/types";
 import type { ExecutiveAuditReport } from "@/types/narrative";
-import { Share2, CheckCircle2, AlertCircle, Copy } from "lucide-react";
+import { Share2, CheckCircle2, AlertCircle, Copy, Sparkles } from "lucide-react";
 
 interface AuditResultsProps {
   result: AuditResult;
@@ -27,6 +27,32 @@ export function AuditResults({ result, narrative, onReset }: AuditResultsProps) 
   } | null>(null);
   const [showLeadCapture, setShowLeadCapture] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [aiSummary, setAiSummary] = useState<string | null>(null);
+  const [isLoadingAI, setIsLoadingAI] = useState(true);
+  
+  // Generate AI summary on mount
+  useEffect(() => {
+    const generateSummary = async () => {
+      try {
+        const response = await fetch("/api/ai-summary", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(result),
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          setAiSummary(data.summary);
+        }
+      } catch (error) {
+        console.error("AI summary error:", error);
+      } finally {
+        setIsLoadingAI(false);
+      }
+    };
+    
+    generateSummary();
+  }, [result]);
   
   const actionableRecommendations = result.recommendations.filter(
     (r) => r.category !== "already_optimized"
@@ -148,6 +174,39 @@ export function AuditResults({ result, narrative, onReset }: AuditResultsProps) 
           optimizationScore={result.score.overall}
           rating={result.score.rating}
         />
+      </div>
+
+      {/* AI-Generated Personalized Summary */}
+      <div className="card-premium p-8 border-l-4 border-purple-400">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-white" />
+            </div>
+          </div>
+          <div className="flex-1">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+              AI-Powered Analysis
+              <span className="text-xs font-normal text-gray-500 bg-purple-50 px-2 py-1 rounded-full">
+                Powered by Claude
+              </span>
+            </h2>
+            {isLoadingAI ? (
+              <div className="flex items-center gap-3 text-gray-600">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-purple-600"></div>
+                <span>Generating personalized insights...</span>
+              </div>
+            ) : aiSummary ? (
+              <p className="text-gray-800 text-lg leading-relaxed">
+                {aiSummary}
+              </p>
+            ) : (
+              <p className="text-gray-600 italic">
+                AI summary temporarily unavailable. See detailed analysis below.
+              </p>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Overlap Analysis */}
