@@ -4,7 +4,19 @@
 
 AIuditor helps startups and small teams analyze their AI tool spending and uncover optimization opportunities across ChatGPT, Claude, Cursor, Gemini, GitHub Copilot, and API providers.
 
-**Live Demo**: https://aiuditor.vercel.app *(Update after deployment)*
+**Live Demo**: https://aiuditor.vercel.app
+
+---
+
+## Screenshots
+
+**See the [`screenshots/`](./screenshots/) folder for full application screenshots including:**
+- Landing page with instant audit form
+- Dynamic audit form with real-time validation
+- AI-powered analysis with Gemini 2.5 Flash
+- Comprehensive audit results with savings breakdown
+- Detailed recommendations with confidence scoring
+- Shareable public reports with unique URLs
 
 ---
 

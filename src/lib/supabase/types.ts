@@ -58,18 +58,6 @@ export interface AuditRow {
     version: string;
     auditedAt: string;
   };
-  
-  // V2 Narrative Engine data
-  narrative_data: {
-    executiveSummary: any;
-    operationalObservations: any[];
-    workflowStyle: string;
-    teamMaturity: string;
-    overlapNarratives: any[];
-    recommendationNarratives: any[];
-    benchmarkInsights: any[];
-    operationalAssessment: any;
-  } | null;
 }
 
 /**
@@ -114,18 +102,6 @@ export interface PublicAuditData {
   metadata: {
     version: string;
   };
-  
-  // V2 Narrative data (if available)
-  narrative?: {
-    executiveSummary: any;
-    operationalObservations: any[];
-    workflowStyle: string;
-    teamMaturity: string;
-    overlapNarratives: any[];
-    recommendationNarratives: any[];
-    benchmarkInsights: any[];
-    operationalAssessment: any;
-  };
 }
 
 /**
@@ -135,7 +111,7 @@ export function auditResultToRow(
   result: AuditResult,
   slug: string,
   narrativeData?: any
-): Omit<AuditRow, "id" | "created_at"> {
+): Omit<AuditRow, "id" | "created_at" | "narrative_data"> {
   return {
     public_slug: slug,
     
@@ -170,8 +146,6 @@ export function auditResultToRow(
       version: result.version,
       auditedAt: result.auditedAt.toISOString(),
     },
-    
-    narrative_data: narrativeData || null,
   };
 }
 
@@ -211,7 +185,5 @@ export function auditRowToPublic(row: AuditRow): PublicAuditData {
     metadata: {
       version: row.metadata.version,
     },
-    
-    narrative: row.narrative_data || undefined,
   };
 }
