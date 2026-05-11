@@ -25,7 +25,7 @@ export async function generateAISummary(
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash", // Fast and cost-effective
+      model: "gemini-pro", // Fast and cost-effective
       generationConfig: {
         temperature: 0.7,
         maxOutputTokens: 200,
@@ -45,7 +45,7 @@ export async function generateAISummary(
 }
 
 /**
- * Build the prompt for Claude
+ * Build the prompt for Gemini
  */
 function buildPrompt(auditResult: AuditResult): string {
   const { input, savings, score, recommendations } = auditResult;
