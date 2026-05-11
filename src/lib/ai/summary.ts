@@ -25,7 +25,7 @@ export async function generateAISummary(
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-pro", // Fast and cost-effective
+      model: "gemini-2.0-flash-exp", // Gemini 2.5 Flash - Fast and cost-effective
       generationConfig: {
         temperature: 0.7,
         maxOutputTokens: 200,

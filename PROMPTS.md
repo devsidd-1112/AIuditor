@@ -438,8 +438,8 @@ Track what worked and what didn't for future reference.
 This is the ONE feature where AI must be used in production (not just development).
 
 ### Implementation
-**API**: Google Gemini API (gemini-pro)  
-**Model Choice**: Gemini Pro for speed and cost-effectiveness  
+**API**: Google Gemini API (gemini-2.0-flash-exp)  
+**Model Choice**: Gemini 2.5 Flash for speed and cost-effectiveness (10 RPM, 250 RPD free tier)  
 **Max Tokens**: 200  
 **Temperature**: 0.7 (balanced creativity and consistency)
 
@@ -533,13 +533,14 @@ When the API is unavailable or fails:
 ### Cost Analysis
 
 **Per Request**:
-- Model: gemini-pro
+- Model: gemini-2.0-flash-exp (Gemini 2.5 Flash)
+- Free Tier: 10 requests per minute, 250 requests per day
 - Input tokens: ~300 (prompt + context)
 - Output tokens: ~150 (100-word summary)
-- Cost: ~$0.00001 per audit (significantly cheaper than Claude)
+- Cost: Free within tier limits, then ~$0.00001 per audit
 
 **At Scale**:
-- 1,000 audits/month: ~$0.01
+- 1,000 audits/month: Free (within 250/day limit)
 - 10,000 audits/month: ~$0.10
 - Negligible cost for significant value add
 
